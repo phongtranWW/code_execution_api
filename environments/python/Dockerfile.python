@@ -1,0 +1,10 @@
+FROM python:3.11-slim
+
+RUN useradd pythonuser
+
+WORKDIR /tmp/python
+
+RUN chown -R pythonuser:pythonuser /tmp/python
+USER pythonuser
+
+ENTRYPOINT [ "/bin/sh", "-c", "python $FILE" ]
